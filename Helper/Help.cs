@@ -23,5 +23,12 @@
                 Console.WriteLine("Неверный формат. Повторите попытку.");
             }
         }
+
+        public static void StopperConsole()
+        {
+            Console.WriteLine("Нажмите для продолжения...");
+            Console.ReadLine();
+            Console.Clear();
+        }
     }
 }

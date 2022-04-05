@@ -1,4 +1,5 @@
-﻿using Task_04_04;
+﻿using Helper;
+using Task_04_04;
 
 class Program
 {
@@ -16,7 +17,7 @@ class Program
                     var line = new Line();
                     line.SetPoints();
                     line.GetСoefficientStraight();
-                    Stopper();
+                    Help.StopperConsole();
                     break;
                 case ConsoleKey.W:
                     Console.Clear();
@@ -27,11 +28,5 @@ class Program
                     break;
             }
         }
-    }
-    private static void Stopper()
-    {
-        Console.WriteLine("Нажмите для продолжения...");
-        Console.ReadLine();
-        Console.Clear();
     }
 }
