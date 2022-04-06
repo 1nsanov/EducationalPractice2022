@@ -7,79 +7,67 @@ class Program
     private static bool _switch = true;
     static void Main(string[] args)
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-        while (_switch)
+        dataSource.WrapperSwitcher(ref _switch,
+                                   "Q - Create default number | W - create custom number | E - Increment | R - Decrement | T - Print | Y - Exit",
+                                   SelectorUISwitch);
+    }
+
+    private static void SelectorUISwitch()
+    {
+        switch (Console.ReadKey().Key)
         {
-            Console.WriteLine("Q - Create default number | W - create custom number | E - Increment | R - Decrement | T - Print | Y - Exit");
-            switch (Console.ReadKey().Key)
-            {
-                case ConsoleKey.Q:
-                    CreateDefaultNumber();
-                    break;
-                case ConsoleKey.W:
-                    CreateCustomNumber();
-                    break;
-                case ConsoleKey.E:
-                    Increment();
-                    break;
-                case ConsoleKey.R:
-                    Decrement();
-                    break;
-                case ConsoleKey.T:
-                    Print();
-                    break;
-                case ConsoleKey.Y:
-                    dataSource.ExitFromSwitch(ref _switch);
-                    break;
-                default:
-                    dataSource.CommandNotFound();
-                    break;
-            }
+            case ConsoleKey.Q:
+                dataSource.WrapperSwitchAction(CreateDefaultNumber);
+                break;
+            case ConsoleKey.W:
+                dataSource.WrapperSwitchAction(CreateCustomNumber);
+                break;
+            case ConsoleKey.E:
+                dataSource.WrapperSwitchAction(Increment);
+                break;
+            case ConsoleKey.R:
+                dataSource.WrapperSwitchAction(Decrement);
+                break;
+            case ConsoleKey.T:
+                dataSource.WrapperSwitchAction(Print);
+                break;
+            case ConsoleKey.Y:
+                dataSource.ExitFromSwitch(ref _switch);
+                break;
+            default:
+                dataSource.CommandNotFound();
+                break;
         }
     }
 
     private static void CreateDefaultNumber()
     {
-        dataSource.WrapperUIAction(() => {
-            HexNumber = new HexadecimalCounter();
-            HexNumber.PrintValues();
-        });
+        HexNumber = new HexadecimalCounter();
+        HexNumber.PrintValues();
     }
 
     private static void CreateCustomNumber()
     {
-        dataSource.WrapperUIAction(() =>
-        {
-            HexNumber = HexadecimalCounter.SetValue();
-            HexNumber.PrintValues();
-        });
+        HexNumber = HexadecimalCounter.SetValue();
+        HexNumber.PrintValues();
     }
 
     private static void Increment()
     {
-        dataSource.WrapperUIAction(() =>
-        {
-            HexNumber?.Increment();
-            if (HexNumber == null) MessageOnNull();
-        });
+        HexNumber?.Increment();
+        if (HexNumber == null) MessageOnNull();
     }
 
     private static void Decrement()
     {
-        dataSource.WrapperUIAction(() =>
-        {
-            HexNumber?.Decrement();
-            if (HexNumber == null) MessageOnNull();
-        });
+        HexNumber?.Decrement();
+        if (HexNumber == null) MessageOnNull();
     }
 
     private static void Print()
     {
-        dataSource.WrapperUIAction(() =>
-        {
-            HexNumber?.PrintValues();
-            if (HexNumber == null) MessageOnNull();
-        });
+        HexNumber?.PrintValues();
+        if (HexNumber == null) MessageOnNull();
     }
     private static void MessageOnNull()
     {

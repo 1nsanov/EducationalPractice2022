@@ -3,15 +3,32 @@
     public class dataSource
     {
         /// <summary>
-        /// Обертка для консольных команд в кейсах свича
+        /// Обертка для консольных команд в кейсах switch
         /// </summary>
-        /// <param name="action">Выполняемый код</param>
-        public static void WrapperUIAction(Action action)
+        /// <param name="action">Метод</param>
+        public static void WrapperSwitchAction(Action action)
         {
             Console.Clear();
             action?.Invoke();
             StopperConsole();
         }
+
+        /// <summary>
+        /// Обертка для switch
+        /// </summary>
+        /// <param name="switcher">Переключатель</param>
+        /// <param name="description">Описание команд</param>
+        /// <param name="action">Метод</param>
+        public static void WrapperSwitcher(ref bool switcher, string description, Action action)
+        {
+            while (switcher)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(description);
+                action?.Invoke();
+            }
+        }
+        
         /// <summary>
         /// Конверт в int с проверкой на валидность
         /// </summary>
@@ -43,7 +60,7 @@
         /// </summary>
         public static void CommandNotFound()
         {
-            WrapperUIAction(() =>
+            WrapperSwitchAction(() =>
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Command not found...");
