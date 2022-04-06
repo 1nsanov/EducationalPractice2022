@@ -28,18 +28,6 @@
 
         }
         /// <summary>
-        /// Конверт в double с проверкой на валидность
-        /// </summary>
-        /// <returns></returns>
-        public static double ParseDouble()
-        {
-            while (true)
-            {
-                if (double.TryParse(Console.ReadLine(), out double value)) { return value; }
-                Console.WriteLine("Incorrect input. Try again.");
-            }
-        }
-        /// <summary>
         /// Ожидание нажатия для продолжения
         /// </summary>
         public static void StopperConsole()
