@@ -3,30 +3,34 @@ using Task_04_04;
 
 class Program
 {
+    private static bool _switch = true;
     static void Main(string[] args)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        var swicth = true;
-        while (swicth)
+        while (_switch)
         {
-            Console.WriteLine("Q - Построить линиию | W - Выход из программы");
+            Console.WriteLine("Q - Create line | W - Exit");
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.Q:
-                    Console.Clear();                    
-                    var line = new Line();
-                    line.SetPoints();
-                    line.GetСoefficientStraight();
-                    Help.StopperConsole();
+                    CreateLine();
                     break;
                 case ConsoleKey.W:
-                    Console.Clear();
-                    swicth = false;
+                    dataSource.ExitFromSwitch(ref _switch);  
                     break;
                 default:
-                    Console.WriteLine("Такой команды не существует");
+                    dataSource.CommandNotFound();
                     break;
             }
         }
+    }
+    private static void CreateLine()
+    {
+        dataSource.WrapperUIAction(() =>
+        {
+            var line = new Line();
+            line.SetPoints();
+            line.GetСoefficientStraight();
+        });
     }
 }

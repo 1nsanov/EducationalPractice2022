@@ -27,11 +27,11 @@ namespace Task_05_04
             while (true)
             {
                 Console.WriteLine("Enter value:");
-                var value = Help.ParseInt();
+                var value = dataSource.ParseInt();
                 Console.WriteLine("Enter min value:");
-                var minValue = Help.ParseInt();
+                var minValue = dataSource.ParseInt();
                 Console.WriteLine("Enter max value:");
-                var maxValue = Help.ParseInt();
+                var maxValue = dataSource.ParseInt();
                 if (value > minValue && value < maxValue)
                 {
                     return new HexadecimalCounter(value, maxValue, minValue);

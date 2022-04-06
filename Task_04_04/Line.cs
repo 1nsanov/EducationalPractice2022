@@ -10,37 +10,37 @@ namespace Task_04_04
         {
             while (true)
             {
-                Console.WriteLine("Введите кол-во точек:");
-                var count = Help.ParseInt();
+                Console.WriteLine("Input count of points: ");
+                var count = dataSource.ParseInt();
                 if (count > 1)
                 {
                     for (int i = 1; i <= count; i++)
                     {
-                        Console.WriteLine($"Введите X координату точки {i}");
-                        var x = Help.ParseInt();
-                        Console.WriteLine($"Введите Y координату точки {i}");
-                        var y = Help.ParseInt();
+                        Console.WriteLine($"Input X of point {i}");
+                        var x = dataSource.ParseInt();
+                        Console.WriteLine($"Input Y of point {i}");
+                        var y = dataSource.ParseInt();
                         Points?.Add(new Point(x, y));
                     }
                     break;
                 }
-                Console.WriteLine("Для построении линии необходимо не менее двух точек.");
+                Console.WriteLine("Count of points must be more than 1");
             }
         }
 
         public void ShowPoints()
         {
-            Console.WriteLine("Точки линии:");
+            Console.WriteLine("Points of line: ");
             for (int i = 0; i < Points?.Count; i++)
             {
-                Console.WriteLine($"Точка {i + 1}: ({Points[i].X};{Points[i].Y})");
+                Console.WriteLine($"Point {i + 1}: ({Points[i].X};{Points[i].Y})");
             }
         }
 
         public void GetСoefficientStraight()
         {
             var coefficient = GetLenghtStraight() / GetLengthLine();
-            Console.WriteLine($"Коэфф. прямой = {coefficient}");
+            Console.WriteLine($"Coefficient straight line = {coefficient}");
         }
 
         private double GetLenghtStraight()

@@ -4,49 +4,85 @@ using Task_05_04;
 class Program
 {
     private static HexadecimalCounter? HexNumber = null;
+    private static bool _switch = true;
     static void Main(string[] args)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        var swicth = true;
-        while (swicth)
+        while (_switch)
         {
-            Console.WriteLine("Q - Create number default | W - create custom number | E - Increment | R - Decrement | T - Print | Y - Exit");
+            Console.WriteLine("Q - Create default number | W - create custom number | E - Increment | R - Decrement | T - Print | Y - Exit");
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.Q:
-                    Console.Clear();
-                    HexNumber = new HexadecimalCounter();
-                    HexNumber.PrintValues();
-                    Help.StopperConsole();
+                    CreateDefaultNumber();
                     break;
                 case ConsoleKey.W:
-                    Console.Clear();
-                    HexNumber = HexadecimalCounter.SetValue();
-                    HexNumber.PrintValues();
-                    Help.StopperConsole();
+                    CreateCustomNumber();
                     break;
                 case ConsoleKey.E:
-                    Console.Clear();
-                    HexNumber?.Increment();
-                    Help.StopperConsole();
+                    Increment();
                     break;
                 case ConsoleKey.R:
-                    Console.Clear();
-                    HexNumber?.Decrement();
-                    Help.StopperConsole();
+                    Decrement();
                     break;
                 case ConsoleKey.T:
-                    Console.Clear();
-                    HexNumber?.PrintValues();
-                    Help.StopperConsole();
+                    Print();
                     break;
                 case ConsoleKey.Y:
-                    swicth = false;
+                    dataSource.ExitFromSwitch(ref _switch);
                     break;
                 default:
-                    Console.WriteLine("Такой команды не существует");
+                    dataSource.CommandNotFound();
                     break;
             }
         }
+    }
+
+    private static void CreateDefaultNumber()
+    {
+        dataSource.WrapperUIAction(() => {
+            HexNumber = new HexadecimalCounter();
+            HexNumber.PrintValues();
+        });
+    }
+
+    private static void CreateCustomNumber()
+    {
+        dataSource.WrapperUIAction(() =>
+        {
+            HexNumber = HexadecimalCounter.SetValue();
+            HexNumber.PrintValues();
+        });
+    }
+
+    private static void Increment()
+    {
+        dataSource.WrapperUIAction(() =>
+        {
+            if (HexNumber != null) { HexNumber?.Increment(); }
+            else { MessageOnNull(); }
+        });
+    }
+
+    private static void Decrement()
+    {
+        dataSource.WrapperUIAction(() =>
+        {
+            if (HexNumber != null) { HexNumber?.Decrement(); }
+            else { MessageOnNull(); }
+        });
+    }
+
+    private static void Print()
+    {
+        dataSource.WrapperUIAction(() =>
+        {
+            if (HexNumber != null) { HexNumber?.PrintValues(); }
+            else { MessageOnNull(); }
+        });
+    }
+    private static void MessageOnNull()
+    {
+        Console.WriteLine("You must create a number first");
     }
 }
