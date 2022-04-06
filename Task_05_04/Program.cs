@@ -59,8 +59,8 @@ class Program
     {
         dataSource.WrapperUIAction(() =>
         {
-            if (HexNumber != null) { HexNumber?.Increment(); }
-            else { MessageOnNull(); }
+            HexNumber?.Increment();
+            if (HexNumber == null) MessageOnNull();
         });
     }
 
@@ -68,8 +68,8 @@ class Program
     {
         dataSource.WrapperUIAction(() =>
         {
-            if (HexNumber != null) { HexNumber?.Decrement(); }
-            else { MessageOnNull(); }
+            HexNumber?.Decrement();
+            if (HexNumber == null) MessageOnNull();
         });
     }
 
@@ -77,8 +77,8 @@ class Program
     {
         dataSource.WrapperUIAction(() =>
         {
-            if (HexNumber != null) { HexNumber?.PrintValues(); }
-            else { MessageOnNull(); }
+            HexNumber?.PrintValues();
+            if (HexNumber == null) MessageOnNull();
         });
     }
     private static void MessageOnNull()
