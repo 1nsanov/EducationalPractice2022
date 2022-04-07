@@ -58,7 +58,7 @@ namespace Task_07_04
             }
         }
         
-        public void GenerateHashtable()
+        private void GenerateHashtable()
         {
             TableInfoCalls = new Hashtable();
             var listKeys = GetKeys();
