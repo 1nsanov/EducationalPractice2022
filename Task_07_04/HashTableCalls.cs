@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Helper;
+using System.Collections;
 using System.Text;
 
 namespace Task_07_04
@@ -18,6 +19,27 @@ namespace Task_07_04
             GenerateHashtable();
         }
 
+        public void AddRecord()
+        {
+            Console.WriteLine("Input code of city:");
+            var code = dataSource.ParseInt();
+            Console.WriteLine("Input city name:");
+            var cityName = Console.ReadLine();
+            var city = $"{code} - {cityName}";
+            Console.WriteLine("Input Date of call:");
+            var date = dataSource.ParseDateTime();
+            Console.WriteLine("Input tariff (1 - Standard; 2 - Express; 3 - SuperExpress):");
+            var tariff = GetTariff();
+            Console.WriteLine("Input duration of call(min):");
+            var duration = dataSource.ParseInt();
+            Console.WriteLine("Input phone number of city:");
+            var phoneCity = Console.ReadLine();
+            Console.WriteLine("Input phone number of subscriber:");
+            var phoneSubscriber = Console.ReadLine();
+            ListInfo.Add(new InfoCall(date, city, tariff, duration, phoneCity, phoneSubscriber));
+            Console.WriteLine("-----Record added!-----");
+            GenerateHashtable();
+        }
 
         public void OutputHashTable()
         {
@@ -38,6 +60,7 @@ namespace Task_07_04
         
         public void GenerateHashtable()
         {
+            TableInfoCalls = new Hashtable();
             var listKeys = GetKeys();
             for (int i = 0; i < listKeys.Count; i++)
             {
@@ -45,6 +68,17 @@ namespace Task_07_04
                 var price = ListInfo.Where(item => listKeys[i] == item.GetKey()).Sum(x => x.GetValue()[1]);
                 TableInfoCalls.Add(listKeys[i], $"Total time: {time, 6} min | Total price: {price} RUB");
             }
+        }
+
+        private static Tariff GetTariff()
+        {
+            return dataSource.ParseInt() switch
+            {
+                1 => Tariff.Standard,
+                2 => Tariff.Express,
+                3 => Tariff.SuperExpress,
+                _ => Tariff.Standard,
+            };
         }
 
         private List<string> GetKeys()
@@ -98,10 +132,10 @@ namespace Task_07_04
         {
             return rnd.Next(1, 4) switch
             {
-                1 => Tariff.Standart,
+                1 => Tariff.Standard,
                 2 => Tariff.Express,
                 3 => Tariff.SuperExpress,
-                _ => Tariff.Standart,
+                _ => Tariff.Standard,
             };
         }
         private static int GenerateDurationCall()

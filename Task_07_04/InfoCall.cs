@@ -32,7 +32,7 @@
         {
             return Tariff switch
             {
-                Tariff.Standart => DurationCall * 2,
+                Tariff.Standard => DurationCall * 2,
                 Tariff.Express => DurationCall * 3,
                 Tariff.SuperExpress => DurationCall * 4,
                 _ => 0,

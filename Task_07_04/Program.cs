@@ -29,16 +29,14 @@ class Program
                 break;
         }
     }
-    
+
     private static void AddRecord()
     {
-}
+        hashTableCalls?.AddRecord();
+    }
     private static void OutputTable()
     {
         hashTableCalls?.OutputHashTable();
         hashTableCalls?.OutputList();
-        if (hashTableCalls == null) { Console.WriteLine("Table is null"); }
     }
-
-
 }

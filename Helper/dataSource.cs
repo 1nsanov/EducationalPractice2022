@@ -44,6 +44,22 @@
             }
 
         }
+
+        /// <summary>
+        /// Конверт в DateTime с проверкой на валидность
+        /// </summary>
+        /// <returns></returns>
+        public static DateTime ParseDateTime()
+        {
+            while (true)
+            {
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime value)) { Console.ForegroundColor = ConsoleColor.Green; return value; }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Incorrect input. Try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+        }
+
         /// <summary>
         /// Ожидание нажатия для продолжения
         /// </summary>

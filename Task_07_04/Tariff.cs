@@ -2,7 +2,7 @@
 {
     public enum Tariff
     {
-        Standart = 0,
+        Standard = 0,
         Express = 1,
         SuperExpress = 2
     }
