@@ -28,7 +28,7 @@
                 action?.Invoke();
             }
         }
-        
+
         /// <summary>
         /// Конверт в int с проверкой на валидность
         /// </summary>
@@ -58,6 +58,22 @@
                 Console.WriteLine("Incorrect input. Try again.");
                 Console.ForegroundColor = ConsoleColor.Green;
             }
+        }
+        /// <summary>
+        /// Проверка на пустую строку
+        /// </summary>
+        /// <returns></returns>
+        public static string ParseString()
+        {
+            while (true)
+            {
+                var line = Console.ReadLine();
+                if (!string.IsNullOrEmpty(line)) { Console.ForegroundColor = ConsoleColor.Green; return line; }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Incorrect input. String can't be empty. Try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
         }
 
         /// <summary>

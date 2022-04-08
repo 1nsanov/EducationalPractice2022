@@ -24,7 +24,7 @@ namespace Task_07_04
             Console.WriteLine("Input code of city:");
             var code = dataSource.ParseInt();
             Console.WriteLine("Input city name:");
-            var cityName = Console.ReadLine();
+            var cityName = dataSource.ParseString();
             var city = $"{code} - {cityName}";
             Console.WriteLine("Input Date of call:");
             var date = dataSource.ParseDateTime();
@@ -33,9 +33,9 @@ namespace Task_07_04
             Console.WriteLine("Input duration of call(min):");
             var duration = dataSource.ParseInt();
             Console.WriteLine("Input phone number of city:");
-            var phoneCity = Console.ReadLine();
+            var phoneCity = dataSource.ParseString();
             Console.WriteLine("Input phone number of subscriber:");
-            var phoneSubscriber = Console.ReadLine();
+            var phoneSubscriber = dataSource.ParseString();
             ListInfo.Add(new InfoCall(date, city, tariff, duration, phoneCity, phoneSubscriber));
             Console.WriteLine("-----Record added!-----");
             GenerateHashtable();
