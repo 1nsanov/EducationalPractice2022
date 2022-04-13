@@ -44,6 +44,17 @@
             }
 
         }
+        /// <summary>
+        /// Конверт в int с проверкой на валидность для форм
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static int ParseIntForm(string number)
+        {
+            if (int.TryParse(number, out int value)) return value;
+            else throw new Exception("Incorrect input. Try again.");
+        }
+
 
         /// <summary>
         /// Конверт в DateTime с проверкой на валидность
