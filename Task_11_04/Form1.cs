@@ -78,7 +78,8 @@ namespace Task_11_04
         private void GetСoefficientStraight()
         {
             var coefficient = GetLenghtStraight() / GetLengthLine();
-            label5.Text = $"Output: Coefficient straight line = {coefficient}";
+            if (coefficient == 1) label5.Text = $"Линия прямая! коэф = {coefficient}";
+            else label5.Text = $"Линия не прямая! коэф = {coefficient}";
         }
 
         private double GetLenghtStraight()

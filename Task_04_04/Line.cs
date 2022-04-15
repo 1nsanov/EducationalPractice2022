@@ -40,7 +40,8 @@ namespace Task_04_04
         public void GetСoefficientStraight()
         {
             var coefficient = GetLenghtStraight() / GetLengthLine();
-            Console.WriteLine($"Coefficient straight line = {coefficient}");
+            if (coefficient == 1) Console.WriteLine($"Линия прямая! коэф = {coefficient}");
+            else Console.WriteLine($"Линия не прямая! коэф = {coefficient}");
         }
 
         private double GetLenghtStraight()

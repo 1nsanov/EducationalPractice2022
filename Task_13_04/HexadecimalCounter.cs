@@ -1,6 +1,4 @@
-﻿using Helper;
-
-namespace Task_13_04
+﻿namespace Task_13_04
 {
     public class HexadecimalCounter
     {
