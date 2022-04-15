@@ -1,15 +1,15 @@
-﻿using Helper;
-
-namespace Task_13_04
+﻿namespace Task_14_04
 {
     public class HexadecimalCounter
     {
+        public string Id { get; set; }
         public string Value { get; set; }
         public string MaxValue { get; set; }
         public string MinValue { get; set; }
 
         public HexadecimalCounter(int value, int maxValue, int minValue)
         {
+            Id = Guid.NewGuid().ToString();
             Value=ConvertToHex(value);
             MaxValue=ConvertToHex(maxValue);
             MinValue=ConvertToHex(minValue);
@@ -17,6 +17,7 @@ namespace Task_13_04
 
         public HexadecimalCounter()
         {
+            Id = Guid.NewGuid().ToString();
             Value=ConvertToHex(1000);
             MinValue=ConvertToHex(500);
             MaxValue=ConvertToHex(1500);
@@ -32,7 +33,7 @@ namespace Task_13_04
         {
             return $"Value: {Value}({ConvertFromHex(Value)}) | Min: {MinValue}({ConvertFromHex(MinValue)}) | Max: {MaxValue}({ConvertFromHex(MaxValue)})";
         }
-        
+
         public string Increment()
         {
             if (ConvertFromHex(Value) < ConvertFromHex(MaxValue))

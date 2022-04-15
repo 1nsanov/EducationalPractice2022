@@ -1,15 +1,23 @@
 using Helper;
 using Newtonsoft.Json;
 
-namespace Task_13_04
+namespace Task_14_04
 {
     public partial class Form1 : Form
     {
-        public HexadecimalCounter? hexadecimalCounter = null;
+        public int curIdx = 0;
+        public List<HexadecimalCounter> hexadecimalCounterList = new List<HexadecimalCounter>();
         private const string NAME_FILE = "hexadecimal.json";
         public Form1()
         {
             InitializeComponent();
+            if (!File.Exists(NAME_FILE))
+            {
+                File.Create(NAME_FILE).Close();
+                File.WriteAllText(NAME_FILE, "[]");
+            }
+            ReadFromFile();
+            UpdateData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -17,26 +25,30 @@ namespace Task_13_04
             var value = dataSource.ParseIntForm(textBoxV.Text);
             var maxV = dataSource.ParseIntForm(textBoxMaxV.Text);
             var minV = dataSource.ParseIntForm(textBoxMinV.Text);
-            hexadecimalCounter = HexadecimalCounter.SetValue(value, maxV, minV);
+            hexadecimalCounterList.Add(HexadecimalCounter.SetValue(value, maxV, minV));
+            UpdateData();
             SetupUI();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            hexadecimalCounter = new HexadecimalCounter();
+            hexadecimalCounterList.Add(new HexadecimalCounter());
+            UpdateData();
             SetupUI();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            labelMessage.Text = hexadecimalCounter.Increment();
+            labelMessage.Text = hexadecimalCounterList[curIdx].Increment();
             PrintValues();
+            UpdateData();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            labelMessage.Text = hexadecimalCounter.Decrement();
+            labelMessage.Text = hexadecimalCounterList[curIdx].Decrement();
             PrintValues();
+            UpdateData();
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -46,6 +58,7 @@ namespace Task_13_04
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             ReadFromFile();
+            UpdateData();
         }
 
         private void SetupUI()
@@ -65,27 +78,39 @@ namespace Task_13_04
 
         private void PrintValues()
         {
-            labelPrintValues.Text = hexadecimalCounter.PrintValues();
+            if(hexadecimalCounterList[curIdx] != null) labelPrintValues.Text = hexadecimalCounterList[curIdx].PrintValues();
         }
 
         private void WriteToFile()
         {
-            if(hexadecimalCounter != null)
+            if (hexadecimalCounterList != null)
             {
-                File.WriteAllText(NAME_FILE, JsonConvert.SerializeObject(hexadecimalCounter));
+                File.WriteAllText(NAME_FILE, JsonConvert.SerializeObject(hexadecimalCounterList));
                 labelMessage.Text = "File saved";
             }
-            else labelMessage.Text = "Counter is null";
+            else labelMessage.Text = "List is null";
         }
         private void ReadFromFile()
         {
             if (File.Exists(NAME_FILE))
             {
-                hexadecimalCounter = JsonConvert.DeserializeObject<HexadecimalCounter>(File.ReadAllText(NAME_FILE));
-                PrintValues();
+                hexadecimalCounterList = JsonConvert.DeserializeObject<List<HexadecimalCounter>>(File.ReadAllText(NAME_FILE));
                 labelMessage.Text = "File loaded";
             }
             else labelMessage.Text = "File not found";
-        } 
+        }
+        
+        private void UpdateData()
+        {
+            WriteToFile();
+            dataGridView.DataSource = hexadecimalCounterList;
+            ReadFromFile();
+        }
+
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            curIdx = hexadecimalCounterList.FindIndex(x => x.Id == dataGridView.CurrentRow.Cells[0].Value.ToString());
+            SetupUI();
+        }
     }
 }
