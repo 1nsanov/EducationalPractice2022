@@ -5,19 +5,15 @@ namespace Task_14_04
 {
     public partial class Form1 : Form
     {
-        public int curIdx = 0;
-        public List<HexadecimalCounter> hexadecimalCounterList = new List<HexadecimalCounter>();
-        private const string NAME_FILE = "hexadecimal.json";
+        public HexCounterManager _hexCounterManager;
+        private const string PATH = "hexadecimal.json";
         public Form1()
         {
             InitializeComponent();
-            if (!File.Exists(NAME_FILE))
-            {
-                File.Create(NAME_FILE).Close();
-                File.WriteAllText(NAME_FILE, "[]");
-            }
+            _hexCounterManager = new HexCounterManager();
+            _hexCounterManager.DefaultLoad(PATH);
             ReadFromFile();
-            UpdateData();
+            dataGridView.DataSource = _hexCounterManager.hexadecimalCounterList;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,28 +21,28 @@ namespace Task_14_04
             var value = dataSource.ParseIntForm(textBoxV.Text);
             var maxV = dataSource.ParseIntForm(textBoxMaxV.Text);
             var minV = dataSource.ParseIntForm(textBoxMinV.Text);
-            hexadecimalCounterList.Add(HexadecimalCounter.SetValue(value, maxV, minV));
+            _hexCounterManager.AddCounter(value, maxV, minV);
             UpdateData();
             SetupUI();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            hexadecimalCounterList.Add(new HexadecimalCounter());
+            _hexCounterManager.AddCounter();
             UpdateData();
             SetupUI();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            labelMessage.Text = hexadecimalCounterList[curIdx].Increment();
+            labelMessage.Text = _hexCounterManager.IncrementCurrent();
             PrintValues();
             UpdateData();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            labelMessage.Text = hexadecimalCounterList[curIdx].Decrement();
+            labelMessage.Text = _hexCounterManager.DecrementCurrent();
             PrintValues();
             UpdateData();
         }
@@ -62,30 +58,38 @@ namespace Task_14_04
         }
         private void buttonSelect_Click(object sender, EventArgs e)
         {
-            curIdx = hexadecimalCounterList.FindIndex(x => x.Id == dataGridView.CurrentRow.Cells[0].Value.ToString());
+            _hexCounterManager.SetCurrentIndex(dataGridView.CurrentRow.Cells[0].Value.ToString());
             SetupUI();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            if (!isSelectIdx()) return;
             ModeEdit(true);
-            textBox1.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].Value).ToString();
-            textBox2.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MaxValue).ToString();
-            textBox3.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MinValue).ToString();
+            var result = _hexCounterManager.GetForEditCounter();
+            textBox1.Text = result[0];
+            textBox2.Text = result[1];
+            textBox3.Text = result[2];
         }
 
         private void buttonAcceptEdit_Click(object sender, EventArgs e)
         {
-            hexadecimalCounterList[curIdx].Value = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox1.Text));
-            hexadecimalCounterList[curIdx].MaxValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox2.Text));
-            hexadecimalCounterList[curIdx].MinValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox3.Text));
+            var value = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox1.Text));
+            var maxValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox2.Text));
+            var minValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox3.Text));
+            _hexCounterManager.EditCurrent(value, maxValue, minValue);
             ModeEdit(false);
+            PrintValues();
             UpdateData();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            hexadecimalCounterList.RemoveAt(curIdx);
+            if (!isSelectIdx()) return;
+             _hexCounterManager.RemoveCurrent();
+            button3.Enabled = false;
+            button4.Enabled = false;
+            labelPrintValues.Text = "";
             UpdateData();
         }
 
@@ -106,33 +110,23 @@ namespace Task_14_04
 
         private void PrintValues()
         {
-            if(hexadecimalCounterList[curIdx] != null) labelPrintValues.Text = hexadecimalCounterList[curIdx].PrintValues();
+            labelPrintValues.Text = _hexCounterManager.PrintValues();
         }
 
         private void WriteToFile()
         {
-            if (hexadecimalCounterList != null)
-            {
-                File.WriteAllText(NAME_FILE, JsonConvert.SerializeObject(hexadecimalCounterList));
-                labelMessage.Text = "File saved";
-            }
-            else labelMessage.Text = "List is null";
+            labelFileMessage.Text = _hexCounterManager.WriteToFile(PATH);
         }
         private void ReadFromFile()
         {
-            if (File.Exists(NAME_FILE))
-            {
-                hexadecimalCounterList = JsonConvert.DeserializeObject<List<HexadecimalCounter>>(File.ReadAllText(NAME_FILE));
-                labelMessage.Text = "File loaded";
-            }
-            else labelMessage.Text = "File not found";
+            labelFileMessage.Text = _hexCounterManager.ReadFromFile(PATH);
         }
-        
+
         private void UpdateData()
         {
             WriteToFile();
-            dataGridView.DataSource = hexadecimalCounterList;
             ReadFromFile();
+            dataGridView.DataSource = _hexCounterManager.hexadecimalCounterList;
         }
 
         private void ModeEdit(bool mode)
@@ -141,6 +135,18 @@ namespace Task_14_04
             textBox2.Enabled = mode;
             textBox3.Enabled = mode;
             buttonAcceptEdit.Enabled = mode;
+            if (!mode)
+            {
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+            }
+        }
+        private bool isSelectIdx()
+        {
+            if (_hexCounterManager.IsSelectIdx()) { labelError.Text = ""; return true; }
+            labelError.Text = "Non select row";
+            return false;
         }
     }
 }
