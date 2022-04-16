@@ -52,13 +52,14 @@
             }
             else return "Min value reached!";
         }
-        private int ConvertFromHex(string value)
-        {
-            return int.Parse(value, System.Globalization.NumberStyles.HexNumber);
-        }
-        private string ConvertToHex(int value)
+        public static string ConvertToHex(int value)
         {
             return value.ToString("X");
         }
+        public static int ConvertFromHex(string value)
+        {
+            return int.Parse(value, System.Globalization.NumberStyles.HexNumber);
+        }
+        
     }
 }

@@ -60,6 +60,34 @@ namespace Task_14_04
             ReadFromFile();
             UpdateData();
         }
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            curIdx = hexadecimalCounterList.FindIndex(x => x.Id == dataGridView.CurrentRow.Cells[0].Value.ToString());
+            SetupUI();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            ModeEdit(true);
+            textBox1.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].Value).ToString();
+            textBox2.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MaxValue).ToString();
+            textBox3.Text = HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MinValue).ToString();
+        }
+
+        private void buttonAcceptEdit_Click(object sender, EventArgs e)
+        {
+            hexadecimalCounterList[curIdx].Value = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox1.Text));
+            hexadecimalCounterList[curIdx].MaxValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox2.Text));
+            hexadecimalCounterList[curIdx].MinValue = HexadecimalCounter.ConvertToHex(dataSource.ParseIntForm(textBox3.Text));
+            ModeEdit(false);
+            UpdateData();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            hexadecimalCounterList.RemoveAt(curIdx);
+            UpdateData();
+        }
 
         private void SetupUI()
         {
@@ -107,10 +135,12 @@ namespace Task_14_04
             ReadFromFile();
         }
 
-        private void buttonSelect_Click(object sender, EventArgs e)
+        private void ModeEdit(bool mode)
         {
-            curIdx = hexadecimalCounterList.FindIndex(x => x.Id == dataGridView.CurrentRow.Cells[0].Value.ToString());
-            SetupUI();
+            textBox1.Enabled = mode;
+            textBox2.Enabled = mode;
+            textBox3.Enabled = mode;
+            buttonAcceptEdit.Enabled = mode;
         }
     }
 }
