@@ -1,20 +1,26 @@
 using Helper;
-using Newtonsoft.Json;
 
-namespace Task_14_04
+namespace Task_15_04
 {
     public partial class Form1 : Form
     {
-        public HexCounterManager _hexCounterManager;
+        public HexCounterManager? _hexCounterManager;
         private const string PATH = "hexadecimal.json";
+        public static Action? UpdateAfterEdit;
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             _hexCounterManager = new HexCounterManager();
             _hexCounterManager.DefaultLoad(PATH);
             ReadFromFile();
             dataGridView.DataSource = _hexCounterManager.hexadecimalCounterList;
-        }
+            UpdateAfterEdit += PrintValues;
+            UpdateAfterEdit += UpdateData;
+        }        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -61,35 +67,18 @@ namespace Task_14_04
         private void buttonSelect_Click(object sender, EventArgs e)
         {
             _hexCounterManager.SetCurrentIndex(dataGridView.CurrentRow.Cells[0].Value.ToString());
+            MessageBox.Show($"You select counter:\n{_hexCounterManager.PrintValues()}");
             SetupUI();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (!isSelectIdx()) return;
-            ModeEdit(true);
-            var result = _hexCounterManager.GetForEditCounter();
-            textBox1.Text = result[0];
-            textBox2.Text = result[1];
-            textBox3.Text = result[2];
-        }
-
-        private void buttonAcceptEdit_Click(object sender, EventArgs e)
-        {
-            var value = dataSource.ParseIntForm(textBox1.Text);
-            var maxValue = dataSource.ParseIntForm(textBox2.Text);
-            var minValue = dataSource.ParseIntForm(textBox3.Text);
-            if (value > maxValue || value < minValue || maxValue < minValue)
+            var editFrom = new EditForm
             {
-                MessageBox.Show("Incorrect values. Please, try again.");
-                return;
-            }
-            _hexCounterManager.EditCurrent(HexadecimalCounter.ConvertToHex(value),
-                                           HexadecimalCounter.ConvertToHex(maxValue),
-                                           HexadecimalCounter.ConvertToHex(minValue));
-            ModeEdit(false);
-            PrintValues();
-            UpdateData();
+                _hexCounterManager = _hexCounterManager
+            };
+            editFrom.ShowDialog();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -117,7 +106,7 @@ namespace Task_14_04
             textBoxMinV.Clear();
         }
 
-        private void PrintValues()
+        public void PrintValues()
         {
             labelPrintValues.Text = _hexCounterManager.PrintValues();
         }
@@ -131,25 +120,11 @@ namespace Task_14_04
             labelFileMessage.Text = _hexCounterManager.ReadFromFile(PATH);
         }
 
-        private void UpdateData()
+        public void UpdateData()
         {
             WriteToFile();
             ReadFromFile();
             dataGridView.DataSource = _hexCounterManager.hexadecimalCounterList;
-        }
-
-        private void ModeEdit(bool mode)
-        {
-            textBox1.Enabled = mode;
-            textBox2.Enabled = mode;
-            textBox3.Enabled = mode;
-            buttonAcceptEdit.Enabled = mode;
-            if (!mode)
-            {
-                textBox1.Clear();
-                textBox2.Clear();
-                textBox3.Clear();
-            }
         }
         private bool isSelectIdx()
         {

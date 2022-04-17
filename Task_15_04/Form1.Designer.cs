@@ -1,4 +1,4 @@
-﻿namespace Task_14_04
+﻿namespace Task_15_04
 {
     partial class Form1
     {
@@ -37,30 +37,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.labelError = new System.Windows.Forms.Label();
             this.labelPrintValues = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.buttonSelect = new System.Windows.Forms.Button();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonAcceptEdit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonSelect = new System.Windows.Forms.Button();
+            this.labelError = new System.Windows.Forms.Label();
             this.labelFileMessage = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +73,7 @@
             this.textBoxV.Location = new System.Drawing.Point(120, 25);
             this.textBoxV.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxV.Name = "textBoxV";
-            this.textBoxV.Size = new System.Drawing.Size(106, 23);
+            this.textBoxV.Size = new System.Drawing.Size(175, 23);
             this.textBoxV.TabIndex = 1;
             // 
             // textBoxMaxV
@@ -86,7 +81,7 @@
             this.textBoxMaxV.Location = new System.Drawing.Point(120, 52);
             this.textBoxMaxV.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMaxV.Name = "textBoxMaxV";
-            this.textBoxMaxV.Size = new System.Drawing.Size(106, 23);
+            this.textBoxMaxV.Size = new System.Drawing.Size(175, 23);
             this.textBoxMaxV.TabIndex = 3;
             // 
             // label2
@@ -101,10 +96,10 @@
             // 
             // textBoxMinV
             // 
-            this.textBoxMinV.Location = new System.Drawing.Point(119, 81);
+            this.textBoxMinV.Location = new System.Drawing.Point(120, 81);
             this.textBoxMinV.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMinV.Name = "textBoxMinV";
-            this.textBoxMinV.Size = new System.Drawing.Size(106, 23);
+            this.textBoxMinV.Size = new System.Drawing.Size(175, 23);
             this.textBoxMinV.TabIndex = 5;
             // 
             // label3
@@ -119,7 +114,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(229, 23);
+            this.button1.Location = new System.Drawing.Point(311, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 81);
@@ -130,7 +125,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(333, 25);
+            this.button2.Location = new System.Drawing.Point(415, 26);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(78, 79);
@@ -142,27 +137,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(311, 60);
+            this.label4.Location = new System.Drawing.Point(393, 61);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "or";
             // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelError.Location = new System.Drawing.Point(415, 57);
-            this.labelError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(0, 15);
-            this.labelError.TabIndex = 9;
-            // 
             // labelPrintValues
             // 
             this.labelPrintValues.AutoSize = true;
-            this.labelPrintValues.Location = new System.Drawing.Point(18, 107);
+            this.labelPrintValues.Location = new System.Drawing.Point(19, 114);
             this.labelPrintValues.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPrintValues.Name = "labelPrintValues";
             this.labelPrintValues.Size = new System.Drawing.Size(77, 15);
@@ -173,7 +158,7 @@
             // 
             this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(18, 124);
+            this.button3.Location = new System.Drawing.Point(18, 136);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 33);
@@ -186,7 +171,7 @@
             // 
             this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(63, 124);
+            this.button4.Location = new System.Drawing.Point(63, 136);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(39, 33);
@@ -198,16 +183,16 @@
             // labelMessage
             // 
             this.labelMessage.AutoSize = true;
-            this.labelMessage.Location = new System.Drawing.Point(20, 163);
+            this.labelMessage.Location = new System.Drawing.Point(111, 147);
             this.labelMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(32, 15);
+            this.labelMessage.Size = new System.Drawing.Size(28, 15);
             this.labelMessage.TabIndex = 13;
-            this.labelMessage.Text = "/---\\";
+            this.labelMessage.Text = "|---|";
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(120, 124);
+            this.buttonSave.Location = new System.Drawing.Point(16, 370);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(140, 33);
@@ -218,7 +203,7 @@
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(275, 124);
+            this.buttonLoad.Location = new System.Drawing.Point(171, 370);
             this.buttonLoad.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(140, 33);
@@ -227,190 +212,141 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(506, 353);
+            this.tabControl1.TabIndex = 27;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.labelMessage);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.textBoxV);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.textBoxMaxV);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.textBoxMinV);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.labelPrintValues);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(498, 325);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Main";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView);
+            this.tabPage2.Controls.Add(this.buttonRemove);
+            this.tabPage2.Controls.Add(this.buttonEdit);
+            this.tabPage2.Controls.Add(this.buttonSelect);
+            this.tabPage2.Controls.Add(this.labelError);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(498, 325);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Table";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(18, 218);
+            this.dataGridView.Location = new System.Drawing.Point(7, 5);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 33;
-            this.dataGridView.Size = new System.Drawing.Size(512, 177);
-            this.dataGridView.TabIndex = 16;
-            // 
-            // buttonSelect
-            // 
-            this.buttonSelect.Location = new System.Drawing.Point(18, 180);
-            this.buttonSelect.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(242, 34);
-            this.buttonSelect.TabIndex = 17;
-            this.buttonSelect.Text = "Select";
-            this.buttonSelect.UseVisualStyleBackColor = true;
-            this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Location = new System.Drawing.Point(536, 180);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(176, 77);
-            this.buttonEdit.TabIndex = 18;
-            this.buttonEdit.Text = "Edit";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            this.dataGridView.Size = new System.Drawing.Size(484, 173);
+            this.dataGridView.TabIndex = 28;
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(275, 180);
+            this.buttonRemove.Location = new System.Drawing.Point(7, 261);
             this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(255, 34);
-            this.buttonRemove.TabIndex = 19;
+            this.buttonRemove.Size = new System.Drawing.Size(484, 34);
+            this.buttonRemove.TabIndex = 31;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
-            // textBox1
+            // buttonEdit
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(602, 262);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 23);
-            this.textBox1.TabIndex = 22;
+            this.buttonEdit.Location = new System.Drawing.Point(7, 221);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(484, 34);
+            this.buttonEdit.TabIndex = 30;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // textBox2
+            // buttonSelect
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(602, 293);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(106, 23);
-            this.textBox2.TabIndex = 21;
+            this.buttonSelect.Location = new System.Drawing.Point(7, 182);
+            this.buttonSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSelect.Name = "buttonSelect";
+            this.buttonSelect.Size = new System.Drawing.Size(484, 34);
+            this.buttonSelect.TabIndex = 29;
+            this.buttonSelect.Text = "Select";
+            this.buttonSelect.UseVisualStyleBackColor = true;
+            this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
-            // textBox3
+            // labelError
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(602, 325);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(106, 23);
-            this.textBox3.TabIndex = 20;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(536, 265);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 15);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Value:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(536, 296);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 15);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Max value:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(536, 328);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 15);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Min value:";
-            // 
-            // buttonAcceptEdit
-            // 
-            this.buttonAcceptEdit.Enabled = false;
-            this.buttonAcceptEdit.Location = new System.Drawing.Point(535, 353);
-            this.buttonAcceptEdit.Name = "buttonAcceptEdit";
-            this.buttonAcceptEdit.Size = new System.Drawing.Size(176, 42);
-            this.buttonAcceptEdit.TabIndex = 26;
-            this.buttonAcceptEdit.Text = "Accept";
-            this.buttonAcceptEdit.UseVisualStyleBackColor = true;
-            this.buttonAcceptEdit.Click += new System.EventHandler(this.buttonAcceptEdit_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(730, 443);
-            this.tabControl1.TabIndex = 27;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.labelFileMessage);
-            this.tabPage1.Controls.Add(this.dataGridView);
-            this.tabPage1.Controls.Add(this.labelMessage);
-            this.tabPage1.Controls.Add(this.buttonAcceptEdit);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.textBoxV);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBoxMaxV);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBoxMinV);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.buttonRemove);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.buttonEdit);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.buttonSelect);
-            this.tabPage1.Controls.Add(this.labelError);
-            this.tabPage1.Controls.Add(this.labelPrintValues);
-            this.tabPage1.Controls.Add(this.buttonLoad);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.buttonSave);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 415);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelError.Location = new System.Drawing.Point(7, 303);
+            this.labelError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(28, 15);
+            this.labelError.TabIndex = 27;
+            this.labelError.Text = "|---|";
             // 
             // labelFileMessage
             // 
             this.labelFileMessage.AutoSize = true;
-            this.labelFileMessage.Location = new System.Drawing.Point(419, 135);
+            this.labelFileMessage.Location = new System.Drawing.Point(318, 379);
             this.labelFileMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFileMessage.Name = "labelFileMessage";
-            this.labelFileMessage.Size = new System.Drawing.Size(32, 15);
+            this.labelFileMessage.Size = new System.Drawing.Size(28, 15);
             this.labelFileMessage.TabIndex = 27;
-            this.labelFileMessage.Text = "/---\\";
+            this.labelFileMessage.Text = "|---|";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 461);
+            this.ClientSize = new System.Drawing.Size(525, 411);
+            this.Controls.Add(this.labelFileMessage);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.buttonLoad);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "ЛР №10 Безунов Виктор";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.Text = "ЛР №11 Безунов Виктор";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -425,26 +361,20 @@
         private Button button1;
         private Button button2;
         private Label label4;
-        private Label labelError;
         private Label labelPrintValues;
         private Button button3;
         private Button button4;
         private Label labelMessage;
         private Button buttonSave;
         private Button buttonLoad;
-        private DataGridView dataGridView;
-        private Button buttonSelect;
-        private Button buttonEdit;
-        private Button buttonRemove;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Button buttonAcceptEdit;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private Label labelFileMessage;
+        private TabPage tabPage2;
+        private DataGridView dataGridView;
+        private Button buttonRemove;
+        private Button buttonEdit;
+        private Button buttonSelect;
+        private Label labelError;
     }
 }

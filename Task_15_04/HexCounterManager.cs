@@ -1,6 +1,11 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Task_14_04
+namespace Task_15_04
 {
     public class HexCounterManager
     {
@@ -78,7 +83,7 @@ namespace Task_14_04
             return new string[] {
                 HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].Value).ToString(),
                 HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MaxValue).ToString(),
-                HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MinValue).ToString()
+                HexadecimalCounter.ConvertFromHex(hexadecimalCounterList[curIdx].MinValue).ToString() 
             };
         }
         public void EditCurrent(string value, string maxV, string minV)
