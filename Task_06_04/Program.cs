@@ -65,7 +65,7 @@ class Program
         var endCity = Console.ReadLine();
         var startVertex = gragh.Vertexes.Find(x => x.NameCity == startCity);
         var endVertex = gragh.Vertexes.Find(x => x.NameCity == endCity);
-        if (startCity == null || endCity == null) Console.WriteLine("Input correct city...");
+        if (startVertex == null || endVertex == null) Console.WriteLine("Input correct city...");
         else
         {
             if (gragh.Wave(startVertex, endVertex)) Console.WriteLine("Path is exist");
