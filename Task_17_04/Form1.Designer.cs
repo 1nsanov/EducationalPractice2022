@@ -1,4 +1,4 @@
-﻿namespace Task_15_04
+﻿namespace Task_16_04
 {
     partial class Form1
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxV = new System.Windows.Forms.TextBox();
             this.textBoxMaxV = new System.Windows.Forms.TextBox();
@@ -52,6 +53,10 @@
             this.buttonSelect = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.labelFileMessage = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelTimeEnd = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -125,10 +130,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(415, 26);
+            this.button2.Location = new System.Drawing.Point(415, 24);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 79);
+            this.button2.Size = new System.Drawing.Size(78, 81);
             this.button2.TabIndex = 7;
             this.button2.Text = "Set default values";
             this.button2.UseVisualStyleBackColor = true;
@@ -326,12 +331,32 @@
             this.labelFileMessage.TabIndex = 27;
             this.labelFileMessage.Text = "|---|";
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelTimeEnd
+            // 
+            this.labelTimeEnd.AutoSize = true;
+            this.labelTimeEnd.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTimeEnd.Location = new System.Drawing.Point(427, 380);
+            this.labelTimeEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTimeEnd.Name = "labelTimeEnd";
+            this.labelTimeEnd.Size = new System.Drawing.Size(46, 16);
+            this.labelTimeEnd.TabIndex = 28;
+            this.labelTimeEnd.Text = "TIMER";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(525, 411);
+            this.Controls.Add(this.labelTimeEnd);
             this.Controls.Add(this.labelFileMessage);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonSave);
@@ -339,7 +364,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ЛР №11 Безунов Виктор";
+            this.Text = "ЛР №12 Безунов Виктор";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -378,5 +403,9 @@
         private Button buttonEdit;
         private Button buttonSelect;
         private Label labelError;
+        private SaveFileDialog saveFileDialog;
+        private OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Timer timer1;
+        private Label labelTimeEnd;
     }
 }
