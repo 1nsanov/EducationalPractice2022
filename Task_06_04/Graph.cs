@@ -2,8 +2,8 @@
 {
     public class Graph
     {
-        List<Vertex> Vertexes = new List<Vertex>();
-        List<Edge> Edges = new List<Edge>();
+        public List<Vertex> Vertexes = new List<Vertex>();
+        public List<Edge> Edges = new List<Edge>();
         public int VertexCount => Vertexes.Count;
         public int EdgesCount => Edges.Count;
 
@@ -49,7 +49,6 @@
 
         public bool Wave(Vertex start, Vertex finish)
         {
-
             var list = new List<Vertex>
             {
                 start
@@ -67,6 +66,13 @@
                 }
             }
             return list.Contains(finish);
+        }
+        public void PrintEdges()
+        {
+            foreach (var item in Edges)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

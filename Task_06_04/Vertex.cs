@@ -3,14 +3,17 @@
     public class Vertex
     {
         public int Number { get; set; }
-        public Vertex(int number)
+        public string NameCity { get; set; }
+
+        public Vertex(int number, string nameCity)
         {
-            Number = number;
+            Number=number;
+            NameCity=nameCity;
         }
 
         public override string ToString()
         {
-            return Number.ToString();
+            return $"{Number} - {NameCity}";
         }
     }
 }

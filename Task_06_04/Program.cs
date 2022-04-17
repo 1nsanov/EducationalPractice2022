@@ -27,56 +27,50 @@ class Program
 
     private static void StartTask()
     {
-        var rnd = new Random();
+        var gragh = InitGragh();
+        DrawMatrix(gragh);
+        Console.WriteLine("List paths: ");
+        gragh.PrintEdges();
+        CheckOnExistPath(gragh);
+    }
 
+    private static Graph InitGragh()
+    {
         var gragh = new Graph();
-
-        var v1 = new Vertex(1);
-        var v2 = new Vertex(2);
-        var v3 = new Vertex(3);
-        var v4 = new Vertex(4);
-        var v5 = new Vertex(5);
-        var v6 = new Vertex(6);
-        var v7 = new Vertex(7);
-
+        var rnd = new Random();
+        var v1 = new Vertex(1, "Москва");
+        var v2 = new Vertex(2, "Тирасполь");
+        var v3 = new Vertex(3, "Киев");
+        var v4 = new Vertex(4, "Кишинев");
+         
         gragh.AddVertex(v1);
         gragh.AddVertex(v2);
         gragh.AddVertex(v3);
         gragh.AddVertex(v4);
-        gragh.AddVertex(v5);
-        gragh.AddVertex(v6);
-        gragh.AddVertex(v7);
 
-        gragh.AddEdge(v1, v2, rnd.Next(0, 99));
-        gragh.AddEdge(v1, v3, rnd.Next(0, 99));
-        gragh.AddEdge(v3, v4, rnd.Next(0, 99));
-        gragh.AddEdge(v2, v5, rnd.Next(0, 99));
-        gragh.AddEdge(v2, v6, rnd.Next(0, 99));
-        gragh.AddEdge(v6, v5, rnd.Next(0, 99));
-        gragh.AddEdge(v5, v6, rnd.Next(0, 99));
-
-        DrawMatrix(gragh);
-
-        GetVertex(gragh, v1);
-        GetVertex(gragh, v2);
-        GetVertex(gragh, v3);
-        GetVertex(gragh, v4);
-        GetVertex(gragh, v5);
-        GetVertex(gragh, v6);
-        GetVertex(gragh, v7);
-
-        Console.WriteLine(gragh.Wave(v1, v5));
-        Console.WriteLine(gragh.Wave(v2, v4));
+        gragh.AddEdge(v1, v2, rnd.Next(10, 99));
+        gragh.AddEdge(v2, v4, rnd.Next(10, 99));
+        gragh.AddEdge(v4, v3, rnd.Next(10, 99));
+        gragh.AddEdge(v2, v3, rnd.Next(10, 99));
+        gragh.AddEdge(v1, v4, rnd.Next(10, 99));
+        gragh.AddEdge(v1, v3, rnd.Next(10, 99));
+        return gragh;
     }
 
-    private static void GetVertex(Graph gragh, Vertex vertex)
+    private static void CheckOnExistPath(Graph gragh)
     {
-        Console.Write(vertex.Number + ": ");
-        foreach (var item in gragh.GetVertexLists(vertex))
+        Console.WriteLine("Input start city");
+        var startCity = Console.ReadLine();
+        Console.WriteLine("Input end city");
+        var endCity = Console.ReadLine();
+        var startVertex = gragh.Vertexes.Find(x => x.NameCity == startCity);
+        var endVertex = gragh.Vertexes.Find(x => x.NameCity == endCity);
+        if (startCity == null || endCity == null) Console.WriteLine("Input correct city...");
+        else
         {
-            Console.Write(item.Number + ", ");
+            if (gragh.Wave(startVertex, endVertex)) Console.WriteLine("Path is exist");
+            else Console.WriteLine("Path is not exist");
         }
-        Console.WriteLine();
     }
 
     private static void DrawMatrix(Graph gragh)
@@ -85,7 +79,7 @@ class Program
         for (int i = 0; i < gragh.VertexCount; i++)
         {
             Console.Write(i + 1);
-            for (int j = 0; j < gragh.EdgesCount; j++)
+            for (int j = 0; j < gragh.VertexCount; j++)
             {
                 Console.Write(" |" + matrix[i, j] + "| \t");
             }
@@ -98,5 +92,5 @@ class Program
         }
         Console.WriteLine();
         Console.WriteLine();
-    }    
+    }
 }

@@ -21,7 +21,7 @@ namespace Task_06_04
 
         public override string ToString()
         {
-            return $"({From}; {To})";
+            return $"{From}; {To}; {Weight}км";
         }
     }
 }
