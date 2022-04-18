@@ -7,7 +7,7 @@ namespace Task_16_04
         public HexCounterManager? _hexCounterManager;
         private string PATH = "hexadecimal.json";
         public static Action? UpdateAfterEdit;
-        private DateTime TimeEnd = new DateTime(2022, 4, 20, 10, 0, 0);
+        private DateTime TimeEnd = new DateTime(2022, 4, 16, 10, 0, 0);
         public Form1()
         {
             InitializeComponent();
@@ -167,7 +167,9 @@ namespace Task_16_04
         private void timer1_Tick(object sender, EventArgs e)
         {
             var timeRemaining = TimeEnd - DateTime.Now;
-            labelTimeEnd.Text = timeRemaining.ToString(@"d\:hh\:mm\:ss");
+            labelTimeEnd.Text = $"Left time: {timeRemaining.ToString(@"d\:hh\:mm\:ss")}";
+            labelCurrentDate.Text = $"Current date: {DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss")} Weekday: {DateTime.Now.DayOfWeek}";
+            if (timeRemaining.TotalSeconds <= 0) labelTimeEnd.Text = "Time is over"; 
         }
 
         public void InputOnlyNumbers(object sender, KeyPressEventArgs e)
