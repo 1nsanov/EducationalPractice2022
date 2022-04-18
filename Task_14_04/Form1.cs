@@ -1,5 +1,5 @@
 using Helper;
-using Newtonsoft.Json;
+
 
 namespace Task_14_04
 {
@@ -119,7 +119,7 @@ namespace Task_14_04
 
         private void PrintValues()
         {
-            labelPrintValues.Text = _hexCounterManager.PrintValues();
+            labelPrintValues.Text = _hexCounterManager.GetCurrentValues();
         }
 
         private void WriteToFile()

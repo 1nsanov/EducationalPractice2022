@@ -60,7 +60,7 @@ namespace Task_14_04
             if (curIdx == -1) return false;
             return true;
         }
-        public string PrintValues()
+        public string GetCurrentValues()
         {
             if (hexadecimalCounterList[curIdx] != null) return hexadecimalCounterList[curIdx].PrintValues();
             else return "List is null";
