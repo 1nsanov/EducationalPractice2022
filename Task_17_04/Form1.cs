@@ -25,7 +25,6 @@ namespace Task_16_04
             UpdateAfterEdit += PrintValues;
             UpdateAfterEdit += UpdateData;
 
-            
             timer1.Tick += timer1_Tick;
             timer1.Interval = 1000;
             timer1.Enabled = true;
@@ -37,6 +36,11 @@ namespace Task_16_04
             var value = dataSource.ParseIntForm(textBoxV.Text);
             var maxV = dataSource.ParseIntForm(textBoxMaxV.Text);
             var minV = dataSource.ParseIntForm(textBoxMinV.Text);
+            if (value > maxV || value < minV || maxV < minV)
+            {
+                MessageBox.Show("Incorrect values. Please, try again.");
+                return;
+            }
             _hexCounterManager.AddCounter(value, maxV, minV);
             _hexCounterManager.SetCurrentIndex(_hexCounterManager.hexadecimalCounterList.Count - 1);
             UpdateData();
