@@ -28,6 +28,14 @@ namespace Task_12_04
             chart.Series.Clear();
             chart.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            chart.ChartAreas[0].AxisX.Minimum = -10; // минимальное значение по оси X
+            chart.ChartAreas[0].AxisX.Maximum = 10; // максимальное значение по оси X
+            chart.ChartAreas[0].AxisX.Interval = 1; // шаг по оси X
+            chart.ChartAreas[0].AxisX.Title = "x"; // название оси X
+            chart.ChartAreas[0].AxisY.Minimum = -2; // минимальное значение по оси Y
+            chart.ChartAreas[0].AxisY.Maximum = 2; // максимальное значение по оси Y
+            chart.ChartAreas[0].AxisY.Interval = 1; // шаг по оси Y
+            chart.ChartAreas[0].AxisY.Title = "y"; // название оси Y
             series = new Series(Convert.ToString(rnd.Next(0, 1000)));
             series.ChartType = SeriesChartType.Line;
             series.ChartArea = "Graphic";
@@ -37,8 +45,6 @@ namespace Task_12_04
         {
             var start = Convert.ToDouble(startBox.Text);
             var end = Convert.ToDouble(endBox.Text);
-            if (start < 0.4) start = 0.4;
-            if(end > 6) end = 6;
             for (double i = start; i <= end; i += Convert.ToDouble(stepBox.Text))
             {
                 series.Points.AddXY(i, GetY(i));
@@ -49,26 +55,7 @@ namespace Task_12_04
 
         private double GetY(double x)
         {
-            return Math.Pow(x, Math.Cos(x)) / (Math.Abs(x + Math.Pow(Math.E, x)) + Math.Tan(x));
-        }
-
-        private void selectFont_Click(object sender, EventArgs e)
-        {
-            var fontDialog = new FontDialog();
-            if (fontDialog.ShowDialog() == DialogResult.OK) SetFont(fontDialog);
-        } 
-
-        private void SetFont(FontDialog fontDialog)
-        {
-            label1.Font = fontDialog.Font;
-            label2.Font = fontDialog.Font;
-            label3.Font = fontDialog.Font;
-            label4.Font = fontDialog.Font;
-            buildGraphic.Font = fontDialog.Font;
-            selectFont.Font = fontDialog.Font;
-            startBox.Font = fontDialog.Font;
-            endBox.Font = fontDialog.Font;
-            stepBox.Font = fontDialog.Font;
+            return Math.Sin(x) + Math.Cos(4 * x);
         }
     }
 }

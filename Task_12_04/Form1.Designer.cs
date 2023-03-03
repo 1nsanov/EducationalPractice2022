@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.startBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,22 +40,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.stepBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.selectFont = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(11, 85);
             this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart.Series.Add(series2);
             this.chart.Size = new System.Drawing.Size(447, 240);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
@@ -126,22 +125,11 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 8;
             // 
-            // selectFont
-            // 
-            this.selectFont.Location = new System.Drawing.Point(248, 50);
-            this.selectFont.Name = "selectFont";
-            this.selectFont.Size = new System.Drawing.Size(210, 29);
-            this.selectFont.TabIndex = 9;
-            this.selectFont.Text = "Select font";
-            this.selectFont.UseVisualStyleBackColor = true;
-            this.selectFont.Click += new System.EventHandler(this.selectFont_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 337);
-            this.Controls.Add(this.selectFont);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.stepBox);
@@ -152,7 +140,7 @@
             this.Controls.Add(this.startBox);
             this.Controls.Add(this.chart);
             this.Name = "Form1";
-            this.Text = "ЛР №8 Безунов Виктор";
+            this.Text = "График";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
@@ -171,7 +159,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox stepBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button selectFont;
     }
 }
 
